@@ -1,0 +1,32 @@
+<div after-hide="connect.onViewHide()" after-show="connect.onViewShow()" class="min-height md-padding shard-bg shard-fade" flex layout-align="center center" layout="column" shard-show="connect.Show">
+    <img alt="Shard - Logo" src="/assets/images/shard-logo.png"/>
+
+    <!-- IF OLD BROWSER -->
+    <div class="panel" data-ng-if="!connect.ValidBrowser">
+        Używasz przestarzałej przeglądarki. Pobierz
+        <a href="//www.mozilla.org/pl/firefox/new/" target="_blank">Firefox</a>
+        lub
+        <a href="//www.google.pl/chrome/browser/" target="_blank">Chrome</a>
+        i korzystaj z internetu jak normalny człowiek.
+    </div>
+
+    <!-- IF NEW BROWSER -->
+    <div data-ng-if="connect.ValidBrowser">
+        <div class="panel" layout-align="center center" layout="row">
+            <!-- WHEN REFRESH NEEDED -->
+            <div class="md-margin" layout-align="center center" layout="column">
+                <div class="text-center">
+                    <div class="md-headline" data-ng-bind="connect.Progress"></div>
+                    <div data-ng-bind="connect.SubProgress"></div>
+                </div>
+                <div class="progress-container">
+                    <md-progress-circular data-ng-if="!connect.Connected" md-mode="indeterminate"></md-progress-circular>
+                    <md-icon class="shard-icon" data-ng-if="connect.Connected">
+                        done
+                    </md-icon>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

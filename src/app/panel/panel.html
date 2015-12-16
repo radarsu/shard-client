@@ -1,0 +1,92 @@
+<div after-hide="panel.onViewHide()" class="shard-bg shard-fade min-height" flex="100" layout="column" shard-show="panel.Show">
+    <!-- HEADER -->
+    <header class="shard-header" layout-align="center center" layout="row">
+        <div class="hide-sm" flex="40" layout-align="center center" layout="row"></div>
+        <div class="hide-sm" flex="20" layout-align="center center" layout="row">
+            <span data-ng-bind="panel.Char.Name"></span>
+        </div>
+        <div flex-sm="100" flex="40" layout-align="end center" layout="row">
+            <md-button class="md-raised">
+                Opcje
+            </md-button>
+            <md-button class="md-raised" data-ng-click="panel.logOut()">
+                Wyloguj się
+            </md-button>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section flex layout-align="start start" layout="row">
+        <div class="min-height md-padding" flex="33" layout-align="start center" layout="column">
+            <label>Opis wyglądu</label>
+            <md-divider></md-divider>
+            <textarea class="shard-textarea" data-ng-model="panel.Char.Description" flex="grow" placeholder="Opis wyglądu twojej postaci."></textarea>
+            <md-button class="md-raised" data-ng-click="panel.setDescription()">Zmień</md-button>
+        </div>
+        <div class="min-height md-padding" flex="34" layout-align="start center" layout="column">
+            <span class="shard-padding-top">Karta postaci</span>
+            <md-divider></md-divider>
+
+            <!-- AVATAR -->
+            <label>Avatar</label>
+            <div id="avatar-container" layout-align="end center" layout="column">
+                <img data-ng-src="{{panel.avatarUrl}}"/>
+                <button accept="image/jpg" data-ngf-max-size="1MB" data-ngf-resize="{width: 256, height: 256, quality: 1}" data-ngf-select="panel.uploadFiles($file, $invalidFiles)" type="file">
+                    Wgraj avatar
+                </button>
+                <div>
+                    {{panel.f.name}}
+                    {{panel.errFile.name}}
+                    {{panel.errFile.$error}}
+                    {{panel.errFile.$errorParam}}
+                </div>
+                {{panel.errorMsg}}
+            </div>
+            <md-divider></md-divider>
+
+            <!-- PŁEĆ -->
+            <label>
+                Płeć:
+            </label>
+            <span>{{panel.Char.Sex.Name}}</span>
+            <md-divider></md-divider>
+
+            <!-- RASA -->
+            <label>
+                Rasa:
+            </label>
+            <span>{{panel.Char.Race.Name}}</span>
+            <md-divider></md-divider>
+
+            <!-- WIEK -->
+            <label>
+                Wiek:
+            </label>
+            <span>{{panel.Char.Age}}</span>
+            <label>Rok urodzenia:
+                {{panel.Year - panel.Char.Age}}
+                (br.
+                {{panel.Year}})</label>
+            <md-divider></md-divider>
+
+            <!-- ROZPOCZNIJ GRĘ -->
+            <md-button class="md-raised" data-ng-click="panel.startGame()">Wejdź do gry</md-button>
+        </div>
+
+        <!-- STATYSTYKI -->
+        <div class="md-padding" flex="33" layout-align="center center" layout="column">
+            <label>Statystyki</label>
+            <md-divider></md-divider>
+            <table class="shard-table" data-ng-table="panel.statsTable">
+                <tr data-ng-repeat="stat in $data">
+                    <td class="text-center" data-title="'Statystyka'" width="150">{{stat.Scheme.FullName}}</td>
+                    <td class="text-center" data-title="'Wartość'" width="150">{{stat.Value}}</td>
+                    <td class="text-center stat-increase link pointer" data-ng-class="stat.Cost < panel.Char.Exp.Amount - panel.Char.Exp.Spent ? 'shard-blue shard-active' : 'shard-dark'" data-title="'Zwiększ'" width="150">{{stat.Cost ? stat.Cost : "-"}}</td>
+                </tr>
+            </table>
+            <label>Wolne doświadczenie:
+            </label>
+            <span>{{panel.Char.Exp.Amount}}</span>
+        </div>
+    </section>
+</div>

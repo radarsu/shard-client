@@ -1,0 +1,53 @@
+/* GAME */
+/* CHAT */
+#shard-chat {
+    background: $shard-dark-transparent-half;
+    padding: 8px;
+}
+#shard-chat-container {
+    background: transparent;
+}
+.shard-message {
+
+}
+.shard-author {
+    font-weight: 600;
+}
+.shard-date {
+    color: $shard-white-min;
+}
+
+/* MAP */
+#shard-map {
+    background: $shard-dark-transparent-half;
+}
+#shard-map-container {
+    position: absolute;
+}
+.shard-map-block {
+    height: 64px;
+    width: 64px;
+    display: block;
+    float: left;
+    background: url("/assets/images/map-block.jpg");
+    cursor: pointer;
+}
+.shard-map-block:hover {
+    opacity: .8;
+}
+.shard-map-character {
+    margin: 0;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+.shard-map-character-avatar {
+
+}
+.shard-map-character-caption {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 75%;
+}

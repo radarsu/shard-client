@@ -1,0 +1,209 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+// Fonts
+@font-face {
+    font-family: ApoloniaNovaLekkaOT;
+    src: url("../assets/fonts/ApoloniaNovaLekkaOT.otf");
+}
+
+// Variables
+$font-family: ApoloniaNovaLekkaOT;
+$shard-white: rgba(255, 255, 255, .6);
+$shard-white-half: rgba(255, 255, 255, .5);
+$shard-white-min: rgba(255, 255, 255, .05);
+$shard-white-inactive: rgba(255, 255, 255, .2);
+$shard-white-hover: rgba(255, 255, 255, .1);
+$shard-dark: #444;
+$shard-dark-transparent: rgba(0, 0, 0, .2);
+$shard-dark-transparent-half: rgba(0, 0, 0, .5);
+$shard-blue: #3a3a96;
+$shard-black: #000;
+
+$shard-gray-transparent: rgba(50,50,50,.5);
+
+// Import
+@import '../../bower_components/angular-material/angular-material';
+
+/* Material icons */
+@font-face {
+    font-family: "Material Icons";
+    font-style: normal;
+    font-weight: 400;
+    src: url("../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.eot");
+    /* For IE6-8 */
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url("../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff2") format('woff2'), url("../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.woff") format('woff'), url("../../bower_components/material-design-iconfont/iconfont/MaterialIcons-Regular.ttf") format('truetype');
+}
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    /* Preferred icon size */
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: "liga";
+}
+
+/* GENERAL */
+html,
+body {
+    color: $shard-white;
+    letter-spacing: 0.1em;
+}
+.shard-bg {
+    background: $shard-black;
+    background-image: url("../assets/images/bg.jpg");
+}
+a {
+    text-decoration: none;
+    color: $shard-white-inactive;
+}
+a:hover {
+    color: $shard-white-hover;
+}
+.min-height {
+    min-height: 100%;
+}
+img {
+    max-width: 100%;
+}
+.panel {
+    background: $shard-dark-transparent-half;
+    padding: 20px;
+    width: 400px;
+}
+md-divider {
+    width: 75%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+md-progress-circular {
+    display: inline-block;
+}
+.md-button {
+    letter-spacing: 0.2em;
+}
+.text-center {
+    text-align: center;
+}
+.shard-icon {
+    font-size: 50px;
+    margin-top: 20px;
+}
+.progress-container {
+    height: 105px;
+}
+#toast-container > div {
+    width: 400px;
+    word-wrap: break-word;
+}
+.shard-header {
+    background: $shard-dark-transparent-half;
+}
+.shard-number {
+    background: $shard-white-half;
+    height: 50px;
+    width: 50px;
+    font-size: 50px;
+    border-radius: 90px;
+    text-align: center;
+}
+.shard-table th {
+    background: $shard-white-min;
+}
+.shard-table td,
+.shard-table th {
+    border: 1px solid $shard-white-hover;
+}
+.shard-subtitle {
+    font-size: rem(1.3);
+    color: $shard-white-inactive;
+}
+.shard-textarea {
+    background:  $shard-dark-transparent-half;
+    border: none;
+    width: 100%;
+    padding: 8px;
+    color: $shard-white;
+    resize: none;
+}
+.text-center * {
+    text-align: center;
+}
+.shard-padding-left-top {
+    padding-left: 16px;
+    padding-bottom: 16px;
+}
+.shard-padding-top {
+    padding-top: 16px;
+}
+.shard-blue {
+    color: $shard-blue;
+}
+.shard-dark {
+    color: $shard-dark;
+}
+.shard-active {
+    cursor: pointer;
+}
+
+/* TOOLTIP */
+.shard-tooltip {
+    cursor: help;
+    padding: 10px;
+}
+md-tooltip {
+    background: $shard-dark-transparent;
+}
+md-tooltip .md-background {
+    background: $shard-gray-transparent;
+}
+md-tooltip .md-content {
+    white-space: normal;
+    width: 200px;
+    height: auto;
+}
+
+/* ANIMATE VIEW CHANGE */
+/* Put your css in here */
+$animationTimeout: 0.5s;
+.ng-enter.ng-enter-active {
+    display: flex !important;
+}
+.ng-hide-remove {
+    -webkit-animation: enter_sequence $animationTimeout linear;
+    /* Safari/Chrome */
+    animation: enter_sequence $animationTimeout linear;
+    /* IE10+ and Future Browsers */
+}
+.shard-fade.ng-hide-add {
+    -webkit-animation: leave_sequence $animationTimeout linear;
+    /* Safari/Chrome */
+    animation: leave_sequence $animationTimeout linear;
+    /* IE10+ and Future Browsers */
+}
+
+/**
+ *  Do not remove the comment below. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector

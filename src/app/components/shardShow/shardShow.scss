@@ -1,0 +1,34 @@
+/* shardShow directive */
+$animationTimeout: 0.5s;
+
+/* Put your css in here */
+.shard-fade.ng-hide.ng-hide-add-active {
+    display: flex !important;
+}
+.shard-fade.ng-hide-remove {
+	-webkit-animation: enter_sequence $animationTimeout linear; /* Safari/Chrome */
+	animation: enter_sequence $animationTimeout linear; /* IE10+ and Future Browsers */
+}
+.shard-fade.ng-hide-add {
+	-webkit-animation: leave_sequence $animationTimeout linear; /* Safari/Chrome */
+	animation: leave_sequence $animationTimeout linear; /* IE10+ and Future Browsers */
+}
+
+@-webkit-keyframes enter_sequence {
+	0% { opacity:0; }
+	100% { opacity:1; }
+}
+@keyframes enter_sequence {
+	0% { opacity:0; }
+	100% { opacity:1; }
+}
+
+@-webkit-keyframes leave_sequence {
+	0% { opacity:1; }
+	100% { opacity:0; }
+}
+
+@keyframes leave_sequence {
+	0% { opacity:1; }
+	100% { opacity:0; }
+}

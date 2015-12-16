@@ -1,0 +1,50 @@
+<div class="min-height shard-bg" flex layout-align="center center" layout="column">
+    <div after-hide="login.onViewHide()" class="min-height md-padding shard-fade" flex layout-align="center center" layout="column" shard-show="login.Show">
+        <img alt="Shard - Logo" src="/assets/images/shard-logo.png"/>
+
+        <div class="panel" data-ng-animate="'animate'" data-ng-keyup="login.logIn($event)">
+            <div flex layout="row">
+                <div flex="grow">
+                    <md-input-container>
+                        <label>Nazwa postaci</label>
+                        <input data-ng-model="login.Char.Name" id="loginCharName" md-maxlength="30" required type="text"/>
+                    </md-input-container>
+                </div>
+                <div class="shard-tooltip" layout-align="center center" layout="column">
+                    <img alt="shard tooltip" src="/assets/images/tooltip.png"/>
+                    <md-tooltip md-direction="right">
+                        Nazwa postaci może składać się wyłącznie z polskich znaków.
+                    </md-tooltip>
+                </div>
+            </div>
+            <div flex layout="row">
+                <div flex="grow">
+                    <md-input-container>
+                        <label>Hasło postaci</label>
+                        <input data-ng-model="login.Char.Password" required type="password">
+                    </md-input-container>
+                </div>
+                <div class="shard-tooltip" layout-align="center center" layout="column">
+                    <img alt="shard tooltip" src="/assets/images/tooltip.png"/>
+                    <md-tooltip md-direction="right">
+                        Hasła są szyfrowane (sha256) i nieznane także administracji,
+                        więc upewnij się, że go nie zapomnisz.
+                    </md-tooltip>
+                </div>
+            </div>
+            <md-checkbox aria-label="Finished?" data-ng-model="login.Char.RememberPassword">
+                Zapamiętaj hasło
+            </md-checkbox>
+            <div layout="column">
+                <md-button class="md-raised" data-ng-click="login.logIn()" id="logIn">
+                    Zaloguj
+                </md-button>
+            </div>
+            <div data-ng-click="login.register()" layout="column">
+                <md-button class="md-raised">
+                    Zarejestruj
+                </md-button>
+            </div>
+        </div>
+    </div>
+</div>

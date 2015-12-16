@@ -1,0 +1,26 @@
+{
+  "parseFiles": true,
+  "customTests": [],
+  "devFile": "/PATH/TO/modernizr-dev.js",
+  "outputFile": "/PATH/TO/modernizr-output.js",
+  "tests": [
+    "audio",
+    "canvas",
+    "canvastext",
+    "json",
+    "svg",
+    "webgl",
+    "css/flexbox",
+    "css/flexwrap",
+    "css/fontface",
+    "network/xhr-responsetype-json",
+    "network/xhr-responsetype",
+    "storage/localstorage",
+    "svg/asimg",
+    "svg/inline"
+  ],
+  "extensibility": [
+    "setClasses"
+  ],
+  "uglify": true
+}

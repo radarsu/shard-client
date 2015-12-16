@@ -1,0 +1,22 @@
+{
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/audio",
+    "test/canvas",
+    "test/canvastext",
+    "test/json",
+    "test/svg",
+    "test/webgl",
+    "test/css/flexbox",
+    "test/css/flexwrap",
+    "test/css/fontface",
+    "test/network/xhr-responsetype-json",
+    "test/network/xhr-responsetype",
+    "test/storage/localstorage",
+    "test/svg/asimg",
+    "test/svg/inline"
+  ]
+}

@@ -1,0 +1,56 @@
+<div after-hide="game.onViewHide()" class="shard-bg shard-fade min-height" flex="100" layout="column" shard-show="game.Show">
+    <!-- HEADER -->
+    <header class="shard-header" layout-align="center center" layout="row">
+        <div class="hide-sm" flex="40" layout-align="center center" layout="row"></div>
+        <div class="hide-sm" flex="20" layout-align="center center" layout="row">
+            <span data-ng-bind="game.Char.Name"></span>
+            &nbsp;(
+            <span data-ng-bind="game.Char.Location.Name"></span>)
+        </div>
+        <div flex-sm="100" flex="40" layout-align="end center" layout="row">
+            <md-button class="md-raised">
+                Opcje
+            </md-button>
+            <md-button class="md-raised" data-ng-click="game.logOut()">
+                Wyloguj się
+            </md-button>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section flex layout-align="start start" layout="row">
+        <div class="md-padding min-height" flex="30" id="shard-left-tab" layout="column">
+            <!-- CHAT TABS -->
+            <md-tabs md-selected="chat" md-stretch-tabs>
+                <md-tab data-ng-click="game.leftTab = 'chat'">
+                    <a>Czat</a>
+                </md-tab>
+                <md-tab data-ng-click="game.leftTab = 'equipment'">
+                    <a>Ekwipunek</a>
+                </md-tab>
+                <md-tab data-ng-click="game.leftTab = 'abilities'">
+                    <a>Umiejętności</a>
+                </md-tab>
+            </md-tabs>
+            <div data-ng-show="game.leftTab === 'chat'" flex="grow" id="shard-chat-container" layout="column">
+                <div data-ng-bind-html="game.Chat.Text" flex="75" id="shard-chat"></div>
+                <textarea class="shard-textarea" data-ng-keypress="game.Chat.sendMessage($event)" data-ng-model="game.Chat.Message" flex="25" id="shard-message-box"></textarea>
+            </div>
+        </div>
+        <!-- MAPA -->
+        <md-content class="min-height" flex="70" id="shard-map" layout="column">
+            <div class="md-padding" id="shard-map-container" style="width:{{game.Char.Location.Width.length*64}}px;">
+                <div data-ng-repeat="row in game.Char.Location.Height track by $index" data-ng-init="$rowIndex = $index" style="height:64px;">
+                    <div class="shard-map-block" data-ng-repeat="column in game.Char.Location.Width track by $index" data-ng-init="$columnIndex = $index">
+                        <figure class="shard-map-character" data-ng-if="game.isCharacter($rowIndex, $columnIndex)" data-ng-init="$character = game.isCharacter($rowIndex, $columnIndex)">
+                            <img class="shard-map-character-avatar" data-ng-src="{{$character.Avatar}}" alt="{{$character.Name}}"/>
+                            <figcaption class="shard-map-character-caption">
+                                {{$character.Name}}
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </md-content>
+    </section>
+</div>

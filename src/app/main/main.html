@@ -1,0 +1,80 @@
+<div after-hide="main.onViewHide()" class="shard-bg shard-fade min-height" flex="100" layout="column" shard-show="main.Show">
+    <!-- HEADER -->
+    <header class="shard-header" layout-align="center center" layout="row">
+        <div class="hide-sm" flex="40" layout-align="center center" layout="row"></div>
+        <div class="hide-sm" flex="20" layout-align="center center" layout="row">
+            <span data-ng-bind="main.Char.Name"></span>
+        </div>
+        <div flex-sm="100" flex="40" layout-align="end center" layout="row">
+            <md-button class="md-raised">
+                Opcje
+            </md-button>
+            <md-button class="md-raised" data-ng-click="main.logOut()">
+                Wyloguj się
+            </md-button>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section flex layout-align="center start" layout="row">
+        <!-- OPIS WYGLĄDU -->
+        <div flex="33" class="min-height md-padding" layout-align="start center" layout="column">
+            <!--
+            <label class="shard-padding-left-top">Opis wyglądu</label>
+            <md-divider></md-divider>
+            <textarea class="shard-textarea" flex="grow" data-ng-model="vm.Chosen.Description" placeholder="Opis wyglądu twojej postaci."></textarea>
+            -->
+        </div>
+        <div class="md-padding" flex="34" layout-align="center center" layout="column">
+            <span class="md-padding">Aby rozpocząć grę musisz opisać swoją postać.</span>
+
+            <!-- PŁEĆ -->
+            <label>Płeć</label>
+            <md-radio-group data-ng-model="main.Chosen.Sex" data-ng-change="main.changedSex()">
+                <md-radio-button aria-label="Płeć" data-ng-change="main.recalcStats()" data-ng-model="main.Chosen.Sex" data-ng-repeat="sex in main.Sexes" data-ng-value="sex">
+                    {{ sex.Name }}
+                </md-radio-button>
+            </md-radio-group>
+
+            <md-divider></md-divider>
+
+            <!-- RASA -->
+            <label>Rasa</label>
+            <md-radio-group data-ng-model="main.Chosen.Race" data-ng-change="main.changedRace()">
+                <md-radio-button aria-label="Rasa" data-ng-model="race" data-ng-repeat="race in main.Races" data-ng-value="race">
+                    {{ race.Name }}
+                </md-radio-button>
+            </md-radio-group>
+            <md-divider></md-divider>
+
+            <!-- WIEK -->
+            <label>Wiek postaci</label>
+            <span class="shard-subtitle" data-ng-show="main.Chosen.Race">Od {{main.Chosen.Race.MinAge}} do {{main.Chosen.Race.MaxAge}}</span>
+            <md-input-container class="text-center">
+                <input aria-label="Rok urodzenia" data-ng-model="main.Chosen.Age" data-ng-change="main.changedAge()" min="{{main.Chosen.Race.MinAge}}" max="{{main.Chosen.Race.MaxAge}}" required type="number"/>
+            </md-input-container>
+            <label>Rok urodzenia: {{main.Year - main.Chosen.Age}} (br. {{main.Year}})</label>
+            <md-divider></md-divider>
+
+            <!-- ROZPOCZNIJ GRĘ -->
+            <md-button class="md-raised" data-ng-click="main.createChar()" data-ng-disabled="main.createButtonDisabled">Utwórz postać</md-button>
+        </div>
+
+        <!-- STATYSTYKI -->
+        <div class="md-padding" flex="33" layout-align="center center" layout="column">
+            <div id="race-container" layout="column" layout-align="end center">
+                <img data-ng-src="{{main.raceUrl()}}" />
+            </div>
+            <md-divider></md-divider>
+            <table class="shard-table" data-ng-table="main.statsTable">
+                <tr data-ng-repeat="stat in $data">
+                    <td class="text-center" data-title="'Statystyka'" width="150">{{stat.Scheme.FullName}}</td>
+                    <td class="text-center" data-title="'Wartość'" width="150">{{stat.Value}}</td>
+                    <!--
+                    <td class="text-center stat-increase link pointer" data-title="'Rozdaj'" width="150">{{stat.Cost ? $stat.Cost : "-"}}</td>
+                    -->
+                </tr>
+            </table>
+        </div>
+    </section>
+</div>
